@@ -31,7 +31,32 @@ acc_x = 2
 acc_y = 1.5
 jump_speed = 20
 global.direction_check = 1
+global.player_health = 100
+
+//instance_create(x,y-10,object_health_small)
 </string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string></string>
           </argument>
         </arguments>
       </action>
@@ -123,9 +148,13 @@ if(vel_y &gt; 20){
 if(place_meeting(x, y + 1, object_ground)){
     global.vel_x = .8*global.vel_x
     };
+    
+if(place_meeting(x, y + 1, object_platform)){
+    global.vel_x = .8*global.vel_x
+    }
 
 //Velocity
-if(place_meeting(x,y + 1,object_ground)){
+if(place_meeting(x,y + 1,object_ground) || place_meeting(x,y + 1, object_platform)){
     global.vel_x = global.vel_x + move*acc_x
     };
     else{
@@ -133,7 +162,7 @@ if(place_meeting(x,y + 1,object_ground)){
     }
     
 //Jumping
-if(place_meeting(x,y + 1, object_ground)){
+if(place_meeting(x,y + 1, object_ground) || place_meeting(x, y + 1, object_platform)){
     vel_y = -jump*jump_speed
     };
 
@@ -156,6 +185,19 @@ if(attack = 1){
         }
     }
 
+if(attack = 1){
+    if(alarm[2] = -1){
+        if(global.direction_check = 1){
+            instance_create(x+32,y,object_sword_hitbox)
+            alarm[2] = 5
+            }
+        else if(global.direction_check = -1){
+            instance_create(x,y,object_sword_hitbox)
+            alarm[2] = 5
+            }
+        }
+    }
+
 //Sheild
 if(sheild = 1){
     instance_create(x,y,object_sheild)
@@ -174,6 +216,13 @@ if(place_meeting(x + global.vel_x, y , object_ground)){
         global.vel_x = 0
     };
 
+if(place_meeting(x + global.vel_x, y , object_platform)){
+    while(!place_meeting(x + sign(global.vel_x), y, object_platform)){
+        x += sign(global.vel_x)
+        };
+        global.vel_x = 0
+    };
+
 x = x + global.vel_x //MOVES THE PLAYER
 
 if(place_meeting(x, y + vel_y , object_ground)){
@@ -182,6 +231,14 @@ if(place_meeting(x, y + vel_y , object_ground)){
         };
         vel_y = 0
     };
+    
+if(place_meeting(x, y + vel_y , object_platform)){
+    while(!place_meeting(x, y + sign(vel_y), object_platform)){
+        y += sign(vel_y)
+        };
+        vel_y = 0
+    };
+
 y = y + vel_y //MOVES THE PLAYER
 
 //////////////////////////////////
@@ -189,6 +246,29 @@ y = y + vel_y //MOVES THE PLAYER
 //////////////////////////////////
 
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="object_charger">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>global.player_health = global.player_health - 10
 </string>
           </argument>
         </arguments>
@@ -210,7 +290,7 @@ y = y + vel_y //MOVES THE PLAYER
         <isnot>0</isnot>
       </action>
     </event>
-    <event eventtype="8" enumb="64">
+    <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -227,8 +307,8 @@ y = y + vel_y //MOVES THE PLAYER
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_text(500,320,string(instance_exists(object_sheild)))
-draw_text(500,300,string(global.direction_check))
+            <string>draw_self()
+draw_sprite_ext(sprite_health_small,0,x,y - 10,global.player_health/100,1,0,c_white,1)
 </string>
           </argument>
         </arguments>

@@ -12,10 +12,16 @@
     <sprite>sprites\sprite_combat_menu</sprite>
     <sprite>sprites\sprite_menu_select</sprite>
     <sprite>sprites\sprite_attack</sprite>
+    <sprite>sprites\sprite_sword_hitbox</sprite>
     <sprite>sprites\sprite_bullet</sprite>
     <sprite>sprites\sprite_sheild</sprite>
     <sprite>sprites\sprite_walker</sprite>
     <sprite>sprites\sprite_charger</sprite>
+    <sprite>sprites\sprite_health</sprite>
+    <sprite>sprites\sprite_platform</sprite>
+    <sprite>sprites\sprite_platform_animation</sprite>
+    <sprite>sprites\sprite_platform_broken</sprite>
+    <sprite>sprites\sprite_health_small</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths">
@@ -29,12 +35,20 @@
     <object>objects\object_enemy_combat</object>
     <object>objects\object_menu</object>
     <object>objects\object_sword_attack</object>
+    <object>objects\object_sword_hitbox</object>
     <object>objects\object_bullet</object>
     <object>objects\object_sheild</object>
     <object>objects\object_walker</object>
     <object>objects\object_charger</object>
+    <object>objects\object_score_keeper</object>
+    <object>objects\object_health</object>
+    <object>objects\object_platform</object>
+    <object>objects\object_platform_animation</object>
+    <object>objects\object_platform_broken</object>
+    <object>objects\object_health_small</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\room_test</room>
     <room>rooms\room_movement</room>
     <room>rooms\room_combat</room>
   </rooms>
