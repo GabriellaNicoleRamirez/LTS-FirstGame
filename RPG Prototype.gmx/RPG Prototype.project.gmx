@@ -9,6 +9,7 @@
     <sprite>sprites\sprite_player</sprite>
     <sprite>sprites\sprite_ground</sprite>
     <sprite>sprites\sprite_enemy</sprite>
+    <sprite>sprites\sprite_lava</sprite>
     <sprite>sprites\sprite_combat_menu</sprite>
     <sprite>sprites\sprite_menu_select</sprite>
     <sprite>sprites\sprite_attack</sprite>
@@ -22,6 +23,7 @@
     <sprite>sprites\sprite_platform_animation</sprite>
     <sprite>sprites\sprite_platform_broken</sprite>
     <sprite>sprites\sprite_health_small</sprite>
+    <sprite>sprites\sprite_health_pack</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths">
@@ -46,6 +48,8 @@
     <object>objects\object_platform_animation</object>
     <object>objects\object_platform_broken</object>
     <object>objects\object_health_small</object>
+    <object>objects\object_health_pack</object>
+    <object>objects\object_lava</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room_test</room>
