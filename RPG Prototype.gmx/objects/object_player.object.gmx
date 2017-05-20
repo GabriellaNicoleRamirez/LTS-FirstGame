@@ -32,7 +32,7 @@ acc_y = 1.5
 jump_speed = 20
 global.direction_check = 1
 global.player_health = 100
-
+weapon = 0
 //instance_create(x,y-10,object_health_small)
 </string>
           </argument>
@@ -129,6 +129,17 @@ jump = keyboard_check(ord('W'))
 attack = keyboard_check_pressed(vk_space)
 sheild = keyboard_check(ord('Q'))
 move = key_left + key_right
+weapon_select = keyboard_check_pressed(ord('E'))
+
+//Weapon Swapping
+if(weapon_select = 1){
+    weapon++
+    }
+
+if(weapon &gt; 1){
+    weapon = 0
+    }
+
 
 //Direction Check
 if(global.vel_x != 0){
@@ -178,31 +189,38 @@ if(!place_meeting(x, y + 1, object_ground)){
     
 //attacking
 if(attack = 1){
-    if(alarm[1] = -1){
-        if(global.direction_check = 1){
-            instance_create(x+32,y,object_sword_attack)
-            alarm[1] = 5
-            }
-        else if(global.direction_check = -1){
-            instance_create(x,y,object_sword_attack)
-            alarm[1] = 5
-            }
-        }
-    }
-
-if(attack = 1){
-    if(alarm[2] = -1){
-        if(global.direction_check = 1){
-            instance_create(x+32,y,object_sword_hitbox)
-            alarm[2] = 5
-            }
-        else if(global.direction_check = -1){
-            instance_create(x,y,object_sword_hitbox)
-            alarm[2] = 5
+    if(weapon = 0){
+        if(alarm[1] = -1){
+            if(global.direction_check = 1){
+                instance_create(x+32,y,object_sword_attack)
+                alarm[1] = 5
+                }
+            else if(global.direction_check = -1){
+                instance_create(x,y,object_sword_attack)
+                alarm[1] = 5
+                }
             }
         }
+        if(alarm[2] = -1){
+            if(global.direction_check = 1){
+                instance_create(x+32,y,object_sword_hitbox)
+                alarm[2] = 5
+            }
+        else if(global.direction_check = -1){
+                instance_create(x,y,object_sword_hitbox)
+                alarm[2] = 5
+            }
+        }
+   if(weapon = 1){
+        if(global.direction_check = 1)
+            arrow = instance_create(x + 32, y,object_arrow)
+        if(global.direction_check = -1){
+            arrow = instance_create(x, y,object_arrow)
+            }
+        arrow.direction = global.direction_check
+        arrow.speed = global.direction_check*25
+        }
     }
-
 //Sheild
 if(sheild = 1){
     instance_create(x,y,object_sheild)

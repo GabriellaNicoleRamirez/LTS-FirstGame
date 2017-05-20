@@ -24,6 +24,7 @@
     <sprite>sprites\sprite_platform_broken</sprite>
     <sprite>sprites\sprite_health_small</sprite>
     <sprite>sprites\sprite_health_pack</sprite>
+    <sprite>sprites\sprite_arrow</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths">
@@ -50,11 +51,13 @@
     <object>objects\object_health_small</object>
     <object>objects\object_health_pack</object>
     <object>objects\object_lava</object>
+    <object>objects\object_arrow</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\room_test_2</room>
     <room>rooms\room_test</room>
-    <room>rooms\room_movement</room>
     <room>rooms\room_combat</room>
+    <room>rooms\room_movement</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
