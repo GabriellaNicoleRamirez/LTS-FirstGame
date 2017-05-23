@@ -27,6 +27,9 @@
             <kind>1</kind>
             <string>walker_health = 100
 vel_x = sign(object_player.x - object_walker.x)*5
+vel_y = 0
+acc_y = 1.5
+
 </string>
           </argument>
         </arguments>
@@ -71,17 +74,27 @@ vel_x = sign(object_player.x - object_walker.x)*5
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vel_x = sign(object_player.x - x)*5
+            <string>if(walker_health &lt;= 0){
+    instance_destroy()
+    }
+vel_x = sign(object_player.x - x)*5
+
+if(place_meeting(x + vel_x, y , object_ground)){
+    while(!place_meeting(x + sign(vel_x), y, object_ground)){
+        x += sign(vel_x)
+        };
+        vel_x = 0
+    };
+
+if(!place_meeting(x, y + 1, object_ground)){
+    vel_y = vel_y + acc_y
+    };
+
 
 if(alarm[0] = -1){
     x = x + vel_x
 }
-
-if(walker_health = 0){
-    instance_destroy()
-    }
-
-
+y = y + vel_y
 </string>
           </argument>
         </arguments>
@@ -186,7 +199,9 @@ if(alarm[0] = -1){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.player_health = global.player_health - 1
+            <string>if(instance_exists(object_sheild) = false){
+    global.player_health = global.player_health - 1
+}
 </string>
           </argument>
         </arguments>

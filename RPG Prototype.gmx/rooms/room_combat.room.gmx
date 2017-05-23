@@ -57,6 +57,7 @@
     <instance objName="object_enemy_combat" x="416" y="288" name="inst_2048FBC3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="object_enemy_combat" x="416" y="224" name="inst_EC719AC3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="object_enemy_combat" x="416" y="160" name="inst_494818C1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="object_score_keeper" x="0" y="0" name="inst_35AF4D03" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

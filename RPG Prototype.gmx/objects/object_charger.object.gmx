@@ -63,7 +63,7 @@ if(y - 32 &lt; object_player.y){
     }
 
 //Health Check
-if(charger_health = 0){
+if(charger_health &lt;= 0){
     instance_destroy()
     }
 //Speed Limit

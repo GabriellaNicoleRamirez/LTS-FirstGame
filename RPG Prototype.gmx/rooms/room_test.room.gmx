@@ -97,6 +97,8 @@
     <instance objName="object_lava" x="928" y="736" name="inst_58F9A1BE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="object_health_pack" x="512" y="416" name="inst_E88413FD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="object_walker" x="352" y="704" name="inst_F985D05C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="object_ammo" x="896" y="544" name="inst_C2FBB6F8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="object_ammo" x="32" y="640" name="inst_953B5132" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

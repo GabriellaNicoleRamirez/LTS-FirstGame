@@ -33,6 +33,9 @@ jump_speed = 20
 global.direction_check = 1
 global.player_health = 100
 weapon = 0
+ammo = 5
+shield_max = 60
+player_shield = 60
 //instance_create(x,y-10,object_health_small)
 </string>
           </argument>
@@ -212,6 +215,7 @@ if(attack = 1){
             }
         }
    if(weapon = 1){
+   if(ammo &gt; 0){
         if(global.direction_check = 1)
             arrow = instance_create(x + 32, y,object_arrow)
         if(global.direction_check = -1){
@@ -219,15 +223,29 @@ if(attack = 1){
             }
         arrow.direction = global.direction_check
         arrow.speed = global.direction_check*25
+        ammo--
         }
     }
+    }
+   
 //Sheild
-if(sheild = 1){
-    instance_create(x,y,object_sheild)
-    }
-if(sheild = 0){
-    with(object_sheild)instance_destroy()
-    }
+
+    if(sheild = 1){
+        if(player_shield &gt; 0){
+            instance_create(x,y,object_sheild)
+            player_shield--
+            }
+        else if(player_shield &lt;= 0){
+            with(object_sheild)instance_destroy()
+            }
+        }
+    else if(sheild = 0){
+        with(object_sheild)instance_destroy()
+            if(player_shield &lt; shield_max){
+                player_shield++
+            }
+        }
+
 /////////////////////////////////   
 ///////Collision Checking////////
 /////////////////////////////////
@@ -272,6 +290,43 @@ y = y + vel_y //MOVES THE PLAYER
 </string>
           </argument>
         </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="object_ammo">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>ammo = ammo + 5
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>203</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_kill_object</functionname>
+        <codestring></codestring>
+        <whoName>other</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
       </action>
     </event>
     <event eventtype="4" ename="object_health_pack">
@@ -328,7 +383,9 @@ y = y + vel_y //MOVES THE PLAYER
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.player_health = global.player_health - 5
+            <string>if(instance_exists(object_sheild) = false){
+    global.player_health = global.player_health - 5
+    }
 </string>
           </argument>
         </arguments>
@@ -369,6 +426,7 @@ y = y + vel_y //MOVES THE PLAYER
             <kind>1</kind>
             <string>draw_self()
 draw_sprite_ext(sprite_health_small,0,x,y - 10,global.player_health/100,1,0,c_white,1)
+draw_sprite_ext(sprite_shield_bar,0,x, y - 20, player_shield/shield_max,1,0,c_white,1)
 </string>
           </argument>
         </arguments>
