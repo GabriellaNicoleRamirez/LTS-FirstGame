@@ -1,2 +1,2 @@
-# LittleTrollStudios-FirstGame
+# LTS-FirstGame
 2D Platformer
